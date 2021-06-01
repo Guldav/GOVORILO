@@ -17,6 +17,7 @@ namespace SpeechRecognition
             InitializeComponent();
             this.label1.BackColor = System.Drawing.Color.Transparent;
             this.label2.BackColor = System.Drawing.Color.Transparent;
+            this.label3.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
             this.pictureBox2.BackColor = System.Drawing.Color.Transparent;
         }
@@ -30,7 +31,7 @@ namespace SpeechRecognition
             
             if (e.Result.Confidence > 0.55) l.Text = e.Result.Text;
             l2.Text = ("привет братик");
-
+         
             WindowsMediaPlayer wmp = new WindowsMediaPlayer();
             wmp.URL = @"C:/Users/guldav/Desktop/диплом/Resources/привет братик.wav";
             wmp.controls.play();
@@ -71,6 +72,7 @@ namespace SpeechRecognition
         static void sre_SpeechRecognized2(object sender, SpeechRecognizedEventArgs e)
         {
             l2.Text = "";
+            l3.Text = "";
             int hu, me;
             var db = new Entit();
             if (e.Result.Confidence > 0.55)
@@ -89,22 +91,23 @@ namespace SpeechRecognition
                     {
                         object name = reader.GetValue(1);
                         l2.Text = name.ToString();
-                        object na = reader.GetValue(2);
-                        l3.Text = na.ToString();
+                        object nas = reader.GetValue(2); 
+                        Console.WriteLine(nas.ToString());
+                        l3.Text = nas.ToString();
                     }
                     if (l3.Text == "NULL")
                     {
                         SpeechSynthesizer synth = new SpeechSynthesizer();
                         synth.SetOutputToDefaultAudioDevice();
                         synth.Speak(l2.Text);
-                        Console.WriteLine("1");
+                        
                     }
                     if (l3.Text != "NULL")
                     {
                         WindowsMediaPlayer wmp = new WindowsMediaPlayer();
                         wmp.URL = l3.Text;
                         wmp.controls.play();
-                        Console.WriteLine("99");
+                        //Console.WriteLine("99");
                     }
                     if (l.Text == ("некотян выключись"))
                     {
@@ -183,6 +186,7 @@ namespace SpeechRecognition
         {
             l = label1;
             l2 = label2;
+            l3 = label3;
 
             System.Globalization.CultureInfo ci = new System.Globalization.CultureInfo("ru-ru");
             SpeechRecognitionEngine sre = new SpeechRecognitionEngine(ci);

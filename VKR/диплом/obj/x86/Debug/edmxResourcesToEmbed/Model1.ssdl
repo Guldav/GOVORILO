@@ -1,0 +1,56 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Хранилище WKRModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <!--Ошибки, обнаруженные при создании:
+предупреждение 6002: В таблице или представлении "WKR.dbo.comands" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
+  <EntityType Name="comands">
+    <Key>
+      <PropertyRef Name="comand" />
+      <PropertyRef Name="vopros" />
+    </Key>
+    <Property Name="comand" Type="varchar(max)" Nullable="false" />
+    <Property Name="vopros" Type="varchar(max)" Nullable="false" />
+  </EntityType>
+  <!--Ошибки, обнаруженные при создании:
+предупреждение 6002: В таблице или представлении "WKR.dbo.veb" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
+  <EntityType Name="veb">
+    <Key>
+      <PropertyRef Name="comands" />
+      <PropertyRef Name="slka" />
+    </Key>
+    <Property Name="comands" Type="varchar(max)" Nullable="false" />
+    <Property Name="slka" Type="varchar(max)" Nullable="false" />
+  </EntityType>
+  <!--Ошибки, обнаруженные при создании:
+предупреждение 6002: В таблице или представлении "WKR.dbo.vopot" не определен первичный ключ. Ключ был выведен, а определение таблицы или представления было создано в режиме только для чтения.-->
+  <EntityType Name="vopot">
+    <Key>
+      <PropertyRef Name="vopros" />
+      <PropertyRef Name="otvet" />
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="vopros" Type="varchar(max)" Nullable="false" />
+    <Property Name="otvet" Type="varchar(max)" Nullable="false" />
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+  </EntityType>
+  <EntityContainer Name="Хранилище WKRModelContainer">
+    <EntitySet Name="comands" EntityType="Self.comands" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [comands].[comand] AS [comand], 
+    [comands].[vopros] AS [vopros]
+    FROM [dbo].[comands] AS [comands]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="veb" EntityType="Self.veb" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [veb].[comands] AS [comands], 
+    [veb].[slka] AS [slka]
+    FROM [dbo].[veb] AS [veb]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="vopot" EntityType="Self.vopot" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [vopot].[vopros] AS [vopros], 
+    [vopot].[otvet] AS [otvet], 
+    [vopot].[ID] AS [ID]
+    FROM [dbo].[vopot] AS [vopot]</DefiningQuery>
+    </EntitySet>
+  </EntityContainer>
+</Schema>

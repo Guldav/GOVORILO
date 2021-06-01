@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="WKRModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="comands">
+    <Key>
+      <PropertyRef Name="comand" />
+      <PropertyRef Name="vopros" />
+    </Key>
+    <Property Name="comand" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="vopros" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+  </EntityType>
+  <EntityType Name="veb">
+    <Key>
+      <PropertyRef Name="comands" />
+      <PropertyRef Name="slka" />
+    </Key>
+    <Property Name="comands" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="slka" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+  </EntityType>
+  <EntityType Name="vopot">
+    <Key>
+      <PropertyRef Name="vopros" />
+      <PropertyRef Name="otvet" />
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="vopros" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="otvet" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+  </EntityType>
+  <EntityContainer Name="Entit" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="comands" EntityType="Self.comands" />
+    <EntitySet Name="veb" EntityType="Self.veb" />
+    <EntitySet Name="vopot" EntityType="Self.vopot" />
+  </EntityContainer>
+</Schema>

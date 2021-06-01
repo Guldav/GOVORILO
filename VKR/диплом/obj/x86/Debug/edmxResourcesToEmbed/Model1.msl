@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="Хранилище WKRModelContainer" CdmEntityContainer="Entit">
+    <EntitySetMapping Name="comands">
+      <EntityTypeMapping TypeName="WKRModel.comands">
+        <MappingFragment StoreEntitySet="comands">
+          <ScalarProperty Name="comand" ColumnName="comand" />
+          <ScalarProperty Name="vopros" ColumnName="vopros" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="veb">
+      <EntityTypeMapping TypeName="WKRModel.veb">
+        <MappingFragment StoreEntitySet="veb">
+          <ScalarProperty Name="comands" ColumnName="comands" />
+          <ScalarProperty Name="slka" ColumnName="slka" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="vopot">
+      <EntityTypeMapping TypeName="WKRModel.vopot">
+        <MappingFragment StoreEntitySet="vopot">
+          <ScalarProperty Name="vopros" ColumnName="vopros" />
+          <ScalarProperty Name="otvet" ColumnName="otvet" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
